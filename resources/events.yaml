@@ -14,27 +14,27 @@ components:
       x-amazon-events-detail-type: OrderCreated
       description: Event emitted when an order is created.
       allOf:
-        - $ref: "../../shared/resources/schemas.yaml#/EventBridgeHeader"
+        - $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/EventBridgeHeader"
         - type: object
           properties:
             detail:
-              $ref: "../../shared/resources/schemas.yaml#/Order"
+              $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/Order"
 
     OrderModified:
       x-amazon-events-source: ecommerce.order
       x-amazon-events-detail-type: OrderModified
       description: Event emitted when an order is modified.
       allOf:
-        - $ref: "../../shared/resources/schemas.yaml#/EventBridgeHeader"
+        - $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/EventBridgeHeader"
         - type: object
           properties:
             detail:
               type: object
               properties:
                 old:
-                  $ref: "../../shared/resources/schemas.yaml#/Order"
+                  $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/Order"
                 new:
-                  $ref: "../../shared/resources/schemas.yaml#/Order"
+                  $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/Order"
                 changed:
                   type: array
                   description: Array containing field names that were changed
@@ -46,8 +46,8 @@ components:
       x-amazon-events-detail-type: OrderDeleted
       description: Event emitted when an order is deleted.
       allOf:
-        - $ref: "../../shared/resources/schemas.yaml#/EventBridgeHeader"
+        - $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/EventBridgeHeader"
         - type: object
           properties:
             detail:
-              $ref: "../../shared/resources/schemas.yaml#/Order"
+              $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/Order"

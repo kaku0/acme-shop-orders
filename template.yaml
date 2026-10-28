@@ -16,27 +16,35 @@ Parameters:
     Description: CloudWatch Logs retention period for Lambda functions
   DeliveryApiUrl:
     Type: AWS::SSM::Parameter::Value<String>
+    Default: /ecommerce/dev/delivery-pricing/api/url
     Description: Delivery API Gateway URL
   DeliveryApiArn:
     Type: AWS::SSM::Parameter::Value<String>
+    Default: /ecommerce/dev/delivery-pricing/api/arn
     Description: Delivery API Gateway ARN
   EventBusArn:
     Type: AWS::SSM::Parameter::Value<String>
+    Default: /ecommerce/dev/platform/event-bus/arn
     Description: EventBridge Event Bus ARN
   EventBusName:
     Type: AWS::SSM::Parameter::Value<String>
+    Default: /ecommerce/dev/platform/event-bus/name
     Description: EventBridge Event Bus Name
   PaymentApiUrl:
     Type: AWS::SSM::Parameter::Value<String>
+    Default: /ecommerce/dev/payment/api/url
     Description: Payment API Gateway URL
   PaymentApiArn:
     Type: AWS::SSM::Parameter::Value<String>
+    Default: /ecommerce/dev/payment/api/arn
     Description: Payment API Gateway ARN
   ProductsApiUrl:
     Type: AWS::SSM::Parameter::Value<String>
+    Default: /ecommerce/dev/products/api/url
     Description: Products API Gateway URL
   ProductsApiArn:
     Type: AWS::SSM::Parameter::Value<String>
+    Default: /ecommerce/dev/products/api/arn
     Description: Products API Gateway ARN
 
 
@@ -294,7 +302,7 @@ Resources:
     Properties:
       # The path starts with '../..' as this will be evaluated from the
       # orders/build folder, not the orders folder.
-      TemplateURL: ../../shared/templates/dlq.yaml
+      TemplateURL: templates/dlq.yaml
       Parameters:
         AlarmAction: !Ref AlarmTopic
 

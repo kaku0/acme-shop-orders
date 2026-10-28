@@ -33,13 +33,13 @@ paths:
                 type: object
                 properties:
                   order:
-                    $ref: "../../shared/resources/schemas.yaml#/Order"
+                    $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/Order"
         default:
           description: Something went wrong
           content:
             application/json:
               schema:
-                $ref: "../../shared/resources/schemas.yaml#/Message"
+                $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/Message"
       security:
         - AWS_IAM: []
       x-amazon-apigateway-integration:
@@ -58,9 +58,9 @@ components:
         products:
           type: array
           items:
-            $ref: "../../shared/resources/schemas.yaml#/Product"
+            $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/Product"
         address:
-          $ref: "../../shared/resources/schemas.yaml#/Address"
+          $ref: "https://raw.githubusercontent.com/kaku0/acme-shop-ecom-lib/main/resources/schemas.yaml#/Address"
         deliveryPrice:
           type: integer
           minimum: 0
