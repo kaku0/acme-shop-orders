@@ -24,7 +24,7 @@ from aws_lambda_powertools.metrics import MetricUnit # pylint: disable=import-er
 ENVIRONMENT = os.environ["ENVIRONMENT"]
 SCHEMA_FILE = os.path.join(os.path.dirname(__file__), "schema.json")
 TABLE_NAME = os.environ["TABLE_NAME"]
-DELIVERY_API_URL = os.environ["DELIVERY_API_URL"]
+DELIVERY_PRICING_API_URL = os.environ["DELIVERY_PRICING_API_URL"]
 PAYMENT_API_URL = os.environ["PAYMENT_API_URL"]
 PRODUCTS_API_URL = os.environ["PRODUCTS_API_URL"]
 
@@ -47,7 +47,7 @@ def validate_delivery(order: dict) -> Tuple[bool, str]:
     """
 
     # Gather the domain name and AWS region
-    url = urlparse(DELIVERY_API_URL)
+    url = urlparse(DELIVERY_PRICING_API_URL)
     region = boto3.session.Session().region_name
     # Create the signature helper
     iam_auth = BotoAWSRequestsAuth(aws_host=url.netloc,
@@ -56,7 +56,7 @@ def validate_delivery(order: dict) -> Tuple[bool, str]:
 
     # Send a POST request
     response = requests.post(
-        DELIVERY_API_URL+"/backend/pricing",
+        DELIVERY_PRICING_API_URL+"/backend/pricing",
         json={"products": order["products"], "address": order["address"]},
         auth=iam_auth
     )

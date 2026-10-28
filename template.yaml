@@ -114,7 +114,7 @@ Resources:
       CodeUri: src/create_order/
       Environment:
         Variables:
-          DELIVERY_API_URL: !Ref DeliveryApiUrl
+          DELIVERY_PRICING_API_URL: !Ref DeliveryApiUrl
           PAYMENT_API_URL: !Ref PaymentApiUrl
           PRODUCTS_API_URL: !Ref ProductsApiUrl
       MemorySize: 768

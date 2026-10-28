@@ -15,7 +15,7 @@ lambda_module = pytest.fixture(scope="module", params=[{
     "module_name": "main",
     "environ": {
         "ENVIRONMENT": "test",
-        "DELIVERY_API_URL": "mock://DELIVERY_API_URL",
+        "DELIVERY_PRICING_API_URL": "mock://DELIVERY_PRICING_API_URL",
         "PAYMENT_API_URL": "mock://PAYMENT_API_URL",
         "PRODUCTS_API_URL": "mock://PRODUCTS_API_URL",
         "TABLE_NAME": "TABLE_NAME",
@@ -65,7 +65,7 @@ def test_validate_delivery(lambda_module, order):
     Test validate_delivery()
     """
 
-    url = "mock://DELIVERY_API_URL/backend/pricing"
+    url = "mock://DELIVERY_PRICING_API_URL/backend/pricing"
 
     with requests_mock.Mocker() as m:
         m.post(url, text=json.dumps({"pricing": order["deliveryPrice"]}))
@@ -86,7 +86,7 @@ def test_validate_delivery_incorrect(lambda_module, order):
     Test validate_delivery() with incorrect price
     """
 
-    url = "mock://DELIVERY_API_URL/backend/pricing"
+    url = "mock://DELIVERY_PRICING_API_URL/backend/pricing"
 
     with requests_mock.Mocker() as m:
         m.post(url, text=json.dumps({"pricing": order["deliveryPrice"]+200}))
@@ -107,7 +107,7 @@ def test_validate_delivery_fail(lambda_module, order):
     Test validate_delivery() failing
     """
 
-    url = "mock://DELIVERY_API_URL/backend/pricing"
+    url = "mock://DELIVERY_PRICING_API_URL/backend/pricing"
 
     with requests_mock.Mocker() as m:
         m.post(url, text=json.dumps({"message": "Something went wrong"}), status_code=400)
